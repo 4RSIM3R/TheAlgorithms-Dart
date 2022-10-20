@@ -2,6 +2,9 @@
 //Author:Shawn
 //Email:stepfencurryxiao@gmail.com
 
+import 'package:test/expect.dart';
+import 'package:test/scaffolding.dart';
+
 int ternarySearch(var l, var r, var key, var arr) {
   if (r >= 1) {
     //Find the mid1 and mid2
@@ -37,27 +40,22 @@ int ternarySearch(var l, var r, var key, var arr) {
 
 //Driver code
 void main() {
-  var l, r, p, key;
 
   //Get the array
   var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-  //Print the array
-  print(arr);
-
   //Starting index
-  l = 0;
+  final l = 0;
 
   // length of array
-  r = arr.length;
+  final r = arr.length;
 
-  //Checking for 5
-  //Key to be searched in the array
-  key = 5;
 
-  //Search the key using ternarySearch
-  p = ternarySearch(l, r, key, arr);
+  test('ternarySearch [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 5 will return 4', () {
+    expect(ternarySearch(l, r, 5, arr), 4);
+  });
 
-  //Print the result
-  print("Index of " + key.toString() + " is " + p.toString());
+  test('ternarySearch [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 11 will return -1', () {
+    expect(ternarySearch(l, r, 11, arr), -1); // will be stackoveflow here :(
+  });
 }
